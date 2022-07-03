@@ -10,15 +10,15 @@ export default class App extends Component {
 
   Add = () => {
     if (this.state.task != "") {
-      var today = new Date();
-      var date =
+      let today = new Date();
+      let date =
         today.getFullYear() +
         "/" +
         (today.getMonth() + 1) +
         "/" +
         today.getDate();
 
-      var time =
+      let time =
         today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
       let task = {
@@ -40,8 +40,8 @@ export default class App extends Component {
   };
 
   delete = (index) => {
-    var value = index;
-    var arr = this.state.data;
+    let value = index;
+    let arr = this.state.data;
 
     arr = arr.filter((item, index) => index !== value);
 
