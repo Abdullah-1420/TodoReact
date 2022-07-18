@@ -6,6 +6,7 @@ export default class App extends Component {
     task: "",
     data: [],
     show: "none",
+    today: "",
   };
 
   Add = () => {
@@ -28,9 +29,10 @@ export default class App extends Component {
       };
 
       this.setState({
-        data: [...this.state.data, task],
         task: "",
+        data: [...this.state.data, task],
         show: "none",
+        today: "none",
       });
     } else {
       this.setState({
@@ -40,6 +42,7 @@ export default class App extends Component {
   };
 
   delete = (index) => {
+    console.log(this.state.data.length);
     let value = index;
     let arr = this.state.data;
 
@@ -48,6 +51,12 @@ export default class App extends Component {
     this.setState({
       data: arr,
     });
+
+    if (this.state.data.length - 1 == 0) {
+      this.setState({
+        today: "",
+      });
+    }
   };
 
   render() {
@@ -106,6 +115,13 @@ export default class App extends Component {
                     );
                   })}
                 </ul>
+                <div
+                  class="alert alert-danger"
+                  role="alert"
+                  style={{ display: this.state.today }}
+                >
+                  You not have task today !!!!
+                </div>
               </div>
             </div>
           </div>
